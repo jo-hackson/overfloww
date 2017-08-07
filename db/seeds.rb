@@ -32,7 +32,7 @@ users = 5.times.map do
                 :last_name  => Faker::Name.last_name,
                 :username   => Faker::Hipster.words(2).join(""),
                 :email      => Faker::Internet.email,
-                :password   => '123',
+                :password   => '123123',
               )
 end
 

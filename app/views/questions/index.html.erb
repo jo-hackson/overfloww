@@ -1,0 +1,12 @@
+<h1>Here are all the questions</h1>
+
+
+<h3><%= link_to 'add new question', new_question_path %></h3>
+
+<ol>
+	<% @questions.each do |question| %>
+		<li><%= question.title %><%= link_to 'edit', edit_question_path(question.id) %></li>
+			<%= question.body %>
+	<% end %>
+</ol>
+

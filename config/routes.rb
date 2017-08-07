@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+	# for the users controller, and for the registrations route
+	devise_for :users, :controllers => { registrations: 'registrations' }
+	  
+	resources :questions
+
+	root 'questions#index'
+
 end
