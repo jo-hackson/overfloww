@@ -9,7 +9,7 @@
 		<li><%= question.title %> | questioned by <%= question.user.username %></li>
 		<% if question.user.id == current_user.id %>
 			<%= link_to 'edit', edit_question_path(question.id) %>
-			<%= link_to 'future delete button', edit_question_path(question.id) %>
+			<%= link_to 'future delete button', question_path(question), method: :delete, data: { confirm: "really really?!" } %>
 		<% end %>
 			<%= question.body %>
 	<% end %>
