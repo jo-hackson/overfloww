@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_user!, except: [:index, :show]
+	
 
 # http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
@@ -21,7 +20,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		params["question"]["user_id"] = 1		
+		params["question"]["user_id"] = current_user.id
 		@question = current_user.questions.build(question_params)
 		@question.save
 		redirect_to questions_path

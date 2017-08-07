@@ -1,11 +1,16 @@
 <h1>Here are all the questions</h1>
 
-
-<h3><%= link_to 'add new question', new_question_path %></h3>
+<% if user_signed_in? %>
+	<h3><%= link_to 'add new question', new_question_path %></h3>
+<% end %>
 
 <ol>
 	<% @questions.each do |question| %>
-		<li><%= question.title %><%= link_to 'edit', edit_question_path(question.id) %></li>
+		<li><%= question.title %> | questioned by <%= question.user.username %></li>
+		<% if question.user.id == current_user.id %>
+			<%= link_to 'edit', edit_question_path(question.id) %>
+			<%= link_to 'future delete button', edit_question_path(question.id) %>
+		<% end %>
 			<%= question.body %>
 	<% end %>
 </ol>
