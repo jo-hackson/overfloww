@@ -25,11 +25,7 @@ tags.each do |tag|
   Tag.create!( :name => tag )
 end
 
-questiontags = 20.times.map do 
-  Questiontag.create!( :tag_id => rand(1..7),
-                       :question_id => rand(1..15)
-                     )
-end
+
 
 users = 5.times.map do
   User.create!( :first_name => Faker::Name.first_name,
@@ -37,7 +33,7 @@ users = 5.times.map do
                 :username   => Faker::Hipster.words(2).join(""),
                 :email      => Faker::Internet.email,
                 :password   => '123',
-                :profile_picture => profile_pictures[rand(0..6)] )
+              )
 end
 
 questions = 15.times.map do
@@ -76,4 +72,10 @@ end
 answers.each do |answer|
   answer.votes.create!( :user_id => rand(1..5)
   )
+end
+
+questiontags = 20.times.map do 
+  Questiontag.create!( :tag_id => rand(1..7),
+                       :question_id => rand(1..15)
+                     )
 end
