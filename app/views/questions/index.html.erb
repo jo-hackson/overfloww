@@ -6,7 +6,7 @@
 
 <ol>
 	<% @questions.each do |question| %>
-		<li><%= question.title %> | questioned by <%= question.user.username %></li>
+		<li><%= link_to question.title, question_path(question.id) %> | questioned by <%= question.user.username %></li>
 		<% if question.user.id == current_user.id %>
 			<%= link_to 'edit', edit_question_path(question.id) %>
 			<%= link_to 'future delete button', question_path(question), method: :delete, data: { confirm: "really really?!" } %>

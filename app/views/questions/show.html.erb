@@ -1,7 +1,31 @@
 <h2>This is a single question</h2>
 
-<%= @question.title %>
-<%= @question.body %>
-<%= @question.user.username %>
+<p>title: <%= @question.title %></p>
+<p>body: <%= @question.body %></p>
+<p>questioned by: <%= @question.user.username %></p>
+<p>Comments:</p>
+<% if @question.comments.empty? %>
+	<p>There are no comments yet.</p>
+<% else %>
+	<ol>
+		<% @question.comments.each do |comment| %>
+			<li><%= comment.body %><br>commented by: <%= comment.user.username %></li>
+		<% end %>
+	</ol>
+<% end %>
+
+
+<!-- the array will build nested route /questions/1/comments -->
+<h2>Add comment for this question</h2>
+	<%= form_for([@question, @question.comments.build]) do |f| %>
+		<p>
+			<%= f.label :body %><br>
+			<%= f.text_area :body %>
+		</p>
+
+		<p>
+			<%= f.submit %>
+		</p>
+	<% end %>
 
 <%= link_to 'back', questions_path %>
