@@ -1,0 +1,8 @@
+// remove form
+$('form#new_question').remove();
+
+// show link again
+$('#new_question_link').show();
+
+// add new question to the list
+$('div#all-questions').append('<%= j render(@question) %>')
