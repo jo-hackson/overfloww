@@ -1,17 +1,15 @@
 <h1>Here are all the questions</h1>
 
 <% if user_signed_in? %>
-	<h3><%= link_to 'add new question', new_question_path %></h3>
+<!-- remote is data-remote in the html element -->
+	<h3><%= link_to 'add new question', new_question_path, id: "new_question_link", remote: true %></h3>
 <% end %>
 
-<ol>
-	<% @questions.each do |question| %>
-		<li><%= link_to question.title, question_path(question.id) %> | questioned by <%= question.user.username %></li>
-		<% if question.user.id == current_user.id %>
-			<%= link_to 'edit', edit_question_path(question.id) %>
-			<%= link_to 'future delete button', question_path(question), method: :delete, data: { confirm: "really really?!" } %>
+<div id="all-questions">
+	<ol>
+		<% @questions.each do |question| %>
+			<%= render partial: 'question', locals: { question: question } %>
 		<% end %>
-			<%= question.body %>
-	<% end %>
-</ol>
+	</ol>
+</div>
 

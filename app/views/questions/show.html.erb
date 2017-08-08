@@ -16,6 +16,8 @@
 
 
 <!-- the array will build nested route /questions/1/comments -->
+<!--  link_to 'add comment', new_comment_path, id: "new-comment", remote: true %> -->
+<!-- should this be in views/comments/new.html.erb? -->
 <h2>Add comment for this question</h2>
 	<%= form_for([@question, @question.comments.build]) do |f| %>
 		<p>

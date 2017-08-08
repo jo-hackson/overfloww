@@ -1,0 +1,2 @@
+// since rendering erb html directly into js, need to escape with j method call in Ruby
+$('#new_question_link').hide().after('<%= j render("form") %>' );
